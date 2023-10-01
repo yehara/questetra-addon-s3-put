@@ -1,0 +1,7 @@
+{
+  "name": "questetra-addon-s3-put",
+  "version": "0.0.1",
+  "devDependencies": {
+    "questetra-addon-builder": "git://github.com/yehara/questetra-addon-builder.git"
+  }
+}

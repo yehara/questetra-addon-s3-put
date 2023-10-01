@@ -1,0 +1,60 @@
+{
+  "name": "addon-s3-put",
+  "last-modified": true,
+  "engine-type": "GRAALJS",
+  "label": "S3 Uploader",
+  "label-ja": "S3 ファイルアップロード",
+  "summary": "To upload a file to Amazon S3",
+  "summary-ja": "Amazon S3 にファイルをアップロードします",
+  "configs": [
+    {
+      "name": "awsAccessKey",
+      "required": true,
+      "form-type": "SELECT",
+      "select-data-type": "STRING_TEXTFIELD",
+      "editable": true,
+      "label": "AWS アクセスキー"
+    }, {
+      "name": "awsSecretKey",
+      "required": true,
+      "form-type": "SELECT",
+      "select-data-type": "STRING_TEXTFIELD",
+      "editable": true,
+      "label": "AWS シークレットキー"
+    }, {
+      "name": "awsRegion",
+      "required": true,
+      "form-type": "SELECT",
+      "select-data-type": "STRING_TEXTFIELD",
+      "editable": true,
+      "label": "AWS リージョン"
+    }, {
+      "name": "s3Bucket",
+      "required": true,
+      "form-type": "SELECT",
+      "select-data-type": "STRING_TEXTFIELD",
+      "editable": true,
+      "label": "S3 バケット"
+    }, {
+      "name": "file",
+      "required": true,
+      "form-type": "SELECT",
+      "select-data-type": "FILE",
+      "label": "アップロードするファイル"
+    }, {
+      "name": "filePath",
+      "required": true,
+      "form-type": "SELECT",
+      "select-data-type": "STRING_TEXTAREA",
+      "editable": true,
+      "label": "S3 のファイルパス"
+    }
+  ],
+  "source": [
+    "src/jsSHA.js",
+    "src/digestUtils.js",
+    "src/aws.js",
+    "src/s3.js",
+    "src/main.js"
+  ]
+}
