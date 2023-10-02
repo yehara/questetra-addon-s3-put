@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <service-task-definition>
   <engine-type>3</engine-type>
-  <last-modified>2023-10-01</last-modified>
+  <last-modified>2023-10-02</last-modified>
   <label>S3 Uploader</label>
   <label locale="ja">S3 ファイルアップロード</label>
   <summary>To upload a file to Amazon S3</summary>
@@ -130,9 +130,9 @@ class AWS {
 
         const http = httpClient.begin();
         if (method === 'GET') {
-            return http.get(url).getResponseAsString();
+            return http.get(url);
         } else if (method === 'PUT') {
-            return http.body(body).put(url).getResponseAsString();
+            return http.body(body).put(url);
         }
     }
 
@@ -218,7 +218,12 @@ function doPut() {
     if(files !== null && files.size() > 0) {
         const file = files.get(0);
         engine.log("putting file: " + file.getName() + " to " + path);
-        const result = s3.putObject(path, file);
+        const response = s3.putObject(path, file);
+        const status = response.getStatusCode();
+        engine.log("status: " + status);
+        if (status !== 200) {
+           throw new Error("failed to put file: " + status + " " + response.getResponseAsString());
+        }
     }
 }
 
