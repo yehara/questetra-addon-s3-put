@@ -48,9 +48,9 @@ class AWS {
 
         const http = httpClient.begin();
         if (method === 'GET') {
-            return http.get(url).getResponseAsString();
+            return http.get(url);
         } else if (method === 'PUT') {
-            return http.body(body).put(url).getResponseAsString();
+            return http.body(body).put(url);
         }
     }
 

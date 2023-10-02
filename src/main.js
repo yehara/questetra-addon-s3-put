@@ -20,7 +20,12 @@ function doPut() {
     if(files !== null && files.size() > 0) {
         const file = files.get(0);
         engine.log("putting file: " + file.getName() + " to " + path);
-        const result = s3.putObject(path, file);
+        const response = s3.putObject(path, file);
+        const status = response.getStatusCode();
+        engine.log("status: " + status);
+        if (status !== 200) {
+           throw new Error("failed to put file: " + status + " " + response.getResponseAsString());
+        }
     }
 }
 
